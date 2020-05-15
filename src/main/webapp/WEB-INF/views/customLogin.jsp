@@ -12,7 +12,7 @@
 <h2><c:out value="${error}"/></h2>
 <h2><c:out value="${logout}"/></h2>
 
-<form method='post' action="/opalproject/customLogin">
+<form method='post' action="/opalproject/login">
 	<div>
 		<input type="text" name="username" value="admin">
 	</div>
