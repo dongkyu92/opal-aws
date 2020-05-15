@@ -81,7 +81,7 @@
 	<!--main navbar 끝-->
 	
 	
-	<section>
+	<section class="main">
 	<!-- 회원가입 폼 들어갈 구역 -->
 	</section>
 	

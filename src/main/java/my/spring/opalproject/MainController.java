@@ -11,35 +11,42 @@ public class MainController {
 		
 		return  "main";
 	}
-	//¸ŞÀÎ ÆäÀÌÁö ÄÁÆ®·Ñ·¯
+	//ë©”ì¸ í˜ì´ì§€ ì»¨íŠ¸ë¡¤ëŸ¬
 	
 	@RequestMapping(value="/about")
 	public String about() {
 		
 		return  "about";
 	}
-	//¼Ò°³ ÆäÀÌÁö ÄÁÆ®·Ñ·¯ -- Å¬·¡½º ºĞÇÒÇØ¼­ »ç¿ëÇØµµ µÊ
+	//ì§ˆë³‘DATA ì»¨íŠ¸ë¡¤ëŸ¬ -- í´ë˜ìŠ¤ ë¶„í• í•´ì„œ ì‚¬ìš©í•´ë„ ë¨
 	
 	@RequestMapping(value="/datamain")
 	public String datamain() {
 		
 		return  "datamain";
 	}
-	//Áúº´DATA ÄÁÆ®·Ñ·¯ -- Å¬·¡½º ºĞÇÒÇØ¼­ »ç¿ëÇØµµ µÊ
+	//ë†ì‚°ë¬¼êµ¬ë§¤ ì»¨íŠ¸ë¡¤ëŸ¬ -- í´ë˜ìŠ¤ ë¶„í• í•´ì„œ ì‚¬ìš©í•´ë„ ë¨
 	
 	@RequestMapping(value="/goods")
 	public String goods() {
 		
 		return  "goods";
 	}
-	//³ó»ê¹°±¸¸Å ÄÁÆ®·Ñ·¯ -- Å¬·¡½º ºĞÇÒÇØ¼­ »ç¿ëÇØµµ µÊ
+	//ë†ì‚°ë¬¼êµ¬ë§¤ ì»¨íŠ¸ë¡¤ëŸ¬ -- í´ë˜ìŠ¤ ë¶„í• í•´ì„œ ì‚¬ìš©í•´ë„ ë¨
 	
 	@RequestMapping(value="/markets")
 	public String markets() {
 		
 		return  "markets";
 	}
-	//³ó°¡º°±¸¸Å ÄÁÆ®·Ñ·¯ -- Å¬·¡½º ºĞÇÒÇØ¼­ »ç¿ëÇØµµ µÊ
+	//ë†ê°€ë³„êµ¬ë§¤ ì»¨íŠ¸ë¡¤ëŸ¬ -- í´ë˜ìŠ¤ ë¶„í• í•´ì„œ ì‚¬ìš©í•´ë„ ë¨
+	
+	@RequestMapping(value="/entrance")
+	public String entrance() {
+		
+		return  "entrance";
+	}
+	//íšŒì›ê°€ì… ì»¨íŠ¸ë¡¤ëŸ¬ -- í´ë˜ìŠ¤ ë¶„í• í•´ì„œ ì‚¬ìš©í•´ë„ ë¨
 	
 	
 

@@ -40,8 +40,8 @@
 
 							<div class="collapse navbar-collapse" id="navbarColor03">
 								<ul class="navbar-nav mr-auto">
-									<li class="nav-item"><a class="nav-link" style="font-size: 12px;" href="#">로그인</a></li>
-									<li class="nav-item"><a class="nav-link" style="font-size: 12px;" href="#">회원가입</a></li>
+									<li class="nav-item"><a class="nav-link" style="font-size: 12px;" href="/opalproject/customLogin">로그인</a></li>
+									<li class="nav-item"><a class="nav-link" style="font-size: 12px;" href="/opalproject/entrance">회원가입</a></li>
 									<li class="nav-item"><a class="nav-link" style="font-size: 12px;" href="#">고객센터</a></li>
 								</ul>
 							</div>
@@ -79,7 +79,7 @@
 	<br>
 	<!--main navbar 끝-->
 	
-	<section>
+	<section class="main">
 	<!-- 여기에 만든 컨텐츠를 넣으면 될 것 같다. -->
 	<!-- Main Controller 내부에 존재하는 goods 메서드. -->
 	<!-- 길어진다면 메서드를 분할해가 사용해도 된다. -->
