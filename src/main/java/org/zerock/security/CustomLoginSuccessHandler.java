@@ -19,13 +19,15 @@ public class CustomLoginSuccessHandler implements AuthenticationSuccessHandler{
 		List<String> roleNames = new ArrayList<>();
 		auth.getAuthorities().forEach(authority -> {roleNames.add(authority.getAuthority());});
 		
+		// 200514 김동규 admin 권한이 있는 유저가 로그인 시 admin 페이지로 이동.
 		if(roleNames.contains("ROLE_ADMIN")) {
 			response.sendRedirect("/opalproject/admin");
 			return;
 		}
 		
+		// 200514 김동규 member 권한이 있는 유저가 로그인 시 generalUser 페이지로 이동. 매핑명 주의.
 		if(roleNames.contains("ROLE_MEMBER")) {
-			response.sendRedirect("/opalproject/admin");
+			response.sendRedirect("/opalproject/generaluser");
 			return;
 		}
 		
