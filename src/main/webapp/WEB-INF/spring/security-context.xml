@@ -24,6 +24,7 @@ http://www.springframework.org/schema/beans/spring-beans.xsd"
 	<security:form-login login-page="/customLogin" authentication-success-handler-ref="customLoginSuccess"/>
 	
 	<!-- 200515 김동규 로그아웃 처리와 LogoutSuccessHandler -->
+	<security:logout logout-url="/customLogout" invalidate-session="true"/>
 	<!-- 200515 김동규 로그아웃 처리와 LogoutSuccessHandler 끝.-->
 	
 	
@@ -37,15 +38,15 @@ http://www.springframework.org/schema/beans/spring-beans.xsd"
 
 
 <!-- 200511 김동규 인증과 권한에 대한 실제 처리. -->
-<!-- UserDetailsService 를 처리하면 되는데 다음과 같이 지정하면 됨. -->
+<!-- UserDetailsService 를 처리하면 되는데 다음과 같이 지정하면 됨. (JDBC 연동으로 수정됨.)-->
 <security:authentication-manager>
 
+<!-- 200516 김동규 JDBC를 이용하는 간편 인증/권한 처리 -->
+<!-- jdbc-user-service는 기본적으로 DataSource가 필요하므로 root-context.xml에 있는 설정을 추가함. -->
 	<security:authentication-provider>
-		<security:user-service>
-			<security:user name="member" password="{noop}member" authorities="ROLE_MEMBER"/>
-			<security:user name="admin" password="{noop}admin" authorities="ROLE_ADMIN"/>
-		</security:user-service>
+		<security:jdbc-user-service data-source-ref="dataSource"  />
 	</security:authentication-provider>
+<!-- 200516 김동규 JDBC를 이용하는 간편 인증/권한 처리 끝.-->
 
 </security:authentication-manager>
 <!-- 200511 김동규 인증과 권한에 대한 실제 처리 끝. -->
