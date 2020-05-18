@@ -89,7 +89,6 @@ public class MemberTests {
 				pstmt.executeUpdate();
 			}catch(Exception e) {
 				
-				
 			}finally {
 				if(pstmt != null) {try {pstmt.close();}catch(Exception e) {}}
 				if(con != null) {try {con.close();}catch(Exception e) {}}
