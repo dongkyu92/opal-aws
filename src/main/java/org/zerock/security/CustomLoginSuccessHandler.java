@@ -33,7 +33,6 @@ public class CustomLoginSuccessHandler implements AuthenticationSuccessHandler{
 		
 		response.sendRedirect("/");
 	}
-
 }
 /*
  200514 김동규

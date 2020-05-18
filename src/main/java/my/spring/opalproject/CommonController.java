@@ -9,6 +9,11 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class CommonController {
 	
+	@RequestMapping("/customLogout")
+	public void logoutGET() {
+		System.out.println("Logout 성공");
+	}
+	
 	@RequestMapping(value="/accessError")
 	public ModelAndView accessDenied(Authentication auth) {
 		ModelAndView mav = new ModelAndView();
