@@ -117,10 +117,11 @@
 	 </tr>
 	 <tr>
 	 <td class="td_name">林家</td><td class="td_text"><input type="button" value="林家 八祸" onclick="goPopup();" class="btn btn-outline-secondary">&nbsp;&nbsp;
+	 
 	 <input type="text"  style="width:500px;" id="roadAddrPart1"  name="roadAddrPart1" class="form-control" required="true" readonly="true" />
 	 <input type="text"  style="width:500px;" id="addrDetail"  name="addrDetail"  class="form-control" required="true" readonly="true"/>
-	 
-	 
+	 console.log(addrDetail);
+	 console.log(roadAddrPart1);
 	 <!--<input id="address"  style="width: 200px; text-align: left;" type="text" class="form-control" required="true" readonly="true">--></td>
 	 </tr>
 	 </tbody>

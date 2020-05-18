@@ -11,16 +11,15 @@ http://www.springframework.org/schema/beans/spring-beans.xsd"
 <bean id="customLoginSuccess" class="org.zerock.security.CustomLoginSuccessHandler"></bean>
 <bean id="bcryptPasswordEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"/>
 
-<!-- <security:http entry-point-ref="authenticationEntryPoint">
- -->	<!--  200511 김동규 페이지 접근 권한 설정. -->
+<security:http>
+ 	<!--  200511 김동규 페이지 접근 권한 설정. -->
 <!-- 	<security:intercept-url pattern="/all" access="permitAll"/>
 	<security:intercept-url pattern="/generaluser" access="hasRole('ROLE_MEMBER')"/>
 	<security:intercept-url pattern="/admin" access="hasRole('ROLE_ADMIN')"/> -->
 	
 	<!-- 200512 김동규 로그인 시 권한이 없다면 이 페이지로 이동한다.  -->
 	<!-- authentication-success-handler-ref="customLoginSuccess" 는  위에 핸들러 id를 쓰면 됨.-->
-<!-- 	<security:form-login login-page="/customLogin" authentication-success-handler-ref="customLoginSuccess"/>
- -->	
+<security:form-login login-page="/customLogin" authentication-success-handler-ref="customLoginSuccess"/>	
 	<!-- 200515 김동규 로그아웃 처리와 LogoutSuccessHandler -->
 <!-- 	<security:logout logout-url="/customLogout" invalidate-session="true"/>
  -->	<!-- 200515 김동규 로그아웃 처리와 LogoutSuccessHandler 끝.-->
@@ -28,14 +27,15 @@ http://www.springframework.org/schema/beans/spring-beans.xsd"
 	<!-- '/accessError'라는 URI로 접근 제한 시 보이는 화면을 처리함. -->
 <!-- 	<security:access-denied-handler error-page="/accessError"/>
  -->	<!--  200511 김동규 접근 제한 메세지 처리 끝. -->
-<!-- </security:http> 
- -->
+</security:http> 
+
+ 
+
 
 <security:authentication-manager>
 	<security:authentication-provider>
 		<security:jdbc-user-service data-source-ref="dataSource"  />
 		<security:password-encoder ref="bcryptPasswordEncoder"/>
-
 	</security:authentication-provider>
 </security:authentication-manager>
 
