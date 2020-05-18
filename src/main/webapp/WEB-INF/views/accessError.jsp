@@ -6,7 +6,12 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
+<style>
+div {width:100%; margin:auto; text-align:center; margin-top:40px;}
+</style>
 <body>
-에러가 떴습니다요.
+<div>
+<img src="images/error.PNG" width=400>
+</div>
 </body>
 </html>

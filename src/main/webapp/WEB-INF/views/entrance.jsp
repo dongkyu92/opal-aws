@@ -5,7 +5,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
 <title>소개</title>
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -14,7 +13,7 @@
 	media="screen">
 <link rel="stylesheet" href="resources/_assets/css/custom.min.css">
 <link rel="stylesheet" href="resources/ourcss/main.css">
-<link rel="stylesheet" href="resources/ourcss/about.css">
+<link rel="stylesheet" href="resources/ourcss/entrance.css">
 
 </head>
 <body>
@@ -81,9 +80,60 @@
 	<!--main navbar 끝-->
 	
 	
-	<section class="main">
-	<!-- 회원가입 폼 들어갈 구역 -->
+	<section id="entrance">
+	<h2>회원가입</h2>
+	<form method="post" action="/opalproject/" enctype="multipart/form-data">
+	 <table>
+	 <tbody>
+	 <tr>
+	 <td class="td_name">이름</td><td class="td_text"><input style="width:200px; text-align: left;" type="text"></td>
+	 </tr>
+	 <tr>
+	 <td class="td_name">아이디</td><td class="td_text"><input style="width:200px; text-align:left;" type="text">&nbsp;&nbsp;<input type="button" class="btn btn-outline-secondary" value="중복 확인하기"></td>
+	 </tr>
+	 <tr>
+	 <td class="td_name">비밀번호</td><td class="td_text"><input style="width:200px; text-align:left;" type="text"></td>
+	 </tr>
+	 <tr>
+	 <td class="td_name">비밀번호 확인</td><td class="td_text"><input style="width:200px; text-align:left;" type="text"> <span>&nbsp;&nbsp;*비밀번호 확인을 위해서 한 번만 더 입력해주세요.</span> </td>
+	 </tr>
+	 <tr>
+	 <td class="td_name">별명</td><td class="td_text"><input style="width:200px; text-align:left;" type="text"></td>
+	 </tr>
+	 <tr>
+	 <td class="td_name">생년월일</td><td class="td_text"><input style="width: 200px; text-align: left;" type="date"></td>
+	 </tr>
+	 <tr>
+	 <td class="td_name">성별</td><td class="td_text"><label><input type="radio" name="check" value="female" checked>여자</label>   <label><input type="radio" name="check" value="male">남자</label></td>
+	 </tr>
+	 <tr>
+	 <td class="td_name">이메일</td><td class="td_text"><input style="width:200px; text-align:left;" type="text"> @ <input style="width:200px; text-align:left;" type="text"></td>
+	 </tr>
+	 <tr>
+	 <td class="td_name">전화번호</td><td class="td_text"><input style="width:200px; text-align:left;" type="text"></td>
+	 </tr>
+	 <tr>
+	 <td class="td_name">휴대폰번호</td><td class="td_text"><input style="width:200px; text-align:left;" type="text"></td>
+	 </tr>
+	 <tr>
+	 <td class="td_name">주소</td><td class="td_text"><input type="button" value="주소 검색" onclick="goPopup();" class="btn btn-outline-secondary">&nbsp;&nbsp;
+	 <input type="text"  style="width:500px;" id="roadAddrPart1"  name="roadAddrPart1" class="form-control" required="true" readonly="true" />
+	 <input type="text"  style="width:500px;" id="addrDetail"  name="addrDetail"  class="form-control" required="true" readonly="true"/>
+	 
+	 
+	 <!--<input id="address"  style="width: 200px; text-align: left;" type="text" class="form-control" required="true" readonly="true">--></td>
+	 </tr>
+	 </tbody>
+	 </table>
+	 <div class="button">
+	 <input type="submit" class="btn btn-success" value="회원가입"> 
+     <input onclick="location.href='/opalproject/main'" type="button" class="btn btn-secondary" value="취소">
+     </div>
+	</form>
 	</section>
+	<!-- 주소 창을 띄우는 것까지는 했는데 이게 왜 안 들어가는지까지는 모르겠다!-->
+	<!-- 적용 부분은 좀 더 생각을 해봐야 할 것 같습니다. -->
+	<!-- entrance와 연결되어 있는 부분이 없는 것 같아 form의 action 부분을 빼놓았습니다. -->
 	
 	
 		<footer>
@@ -92,6 +142,8 @@
 	<!--footer 끝-->
 	
 </body>
+
+<script src="resources/juso.js"></script>
 <script src="resources/_vendor/jquery/dist/jquery.min.js"></script>
 <script src="resources/_vendor/popper.js/dist/umd/popper.min.js"></script>
 <script src="resources/_vendor/bootstrap/dist/js/bootstrap.min.js"></script>
