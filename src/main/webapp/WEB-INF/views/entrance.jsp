@@ -120,8 +120,7 @@
 	 
 	 <input type="text"  style="width:500px;" id="roadAddrPart1"  name="roadAddrPart1" class="form-control" required="true" readonly="true" />
 	 <input type="text"  style="width:500px;" id="addrDetail"  name="addrDetail"  class="form-control" required="true" readonly="true"/>
-	 console.log(addrDetail);
-	 console.log(roadAddrPart1);
+	
 	 <!--<input id="address"  style="width: 200px; text-align: left;" type="text" class="form-control" required="true" readonly="true">--></td>
 	 </tr>
 	 </tbody>
@@ -143,7 +142,10 @@
 	<!--footer ³¡-->
 	
 </body>
-
+<script>
+System.out.println("addrDetail");
+System.out.println("roadAddrPart1");
+</script>
 <script src="resources/juso.js"></script>
 <script src="resources/_vendor/jquery/dist/jquery.min.js"></script>
 <script src="resources/_vendor/popper.js/dist/umd/popper.min.js"></script>
