@@ -1,6 +1,7 @@
 package org.zerock.security;
 
 import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 
 import javax.sql.DataSource;
@@ -30,6 +31,7 @@ public class MemberTests {
 			Connection con = null;
 			PreparedStatement pstmt = null;
 			try {
+				
 				con = ds.getConnection();
 				pstmt = con.prepareStatement(sql);
 				
@@ -55,6 +57,42 @@ public class MemberTests {
 				if(con != null) {try {con.close();}catch(Exception e) {}}
 			}
 			
+		}
+	}
+	
+	@Test
+	public void testInsertAuth() {
+		
+		String sql = "insert into member_auth (userid, auth) values (?,?)";
+		
+		for(int i = 0; i<100; i++) {
+			Connection con = null;
+			PreparedStatement pstmt = null;
+			
+			try {
+				con = ds.getConnection();
+				pstmt = con.prepareStatement(sql);
+				
+				if(i<80) {
+					pstmt.setString(1, "user"+i);
+					pstmt.setString(2, "ROLE_USER");
+				}
+				else if(i<90) {
+					pstmt.setString(1, "manager"+i);
+					pstmt.setString(2, "ROLE_MEMBER");
+				}
+				else {
+					pstmt.setString(1, "admin"+i);
+					pstmt.setString(2, "ROLE_ADMIN");
+				}
+				
+				pstmt.executeUpdate();
+			}catch(Exception e) {
+				
+			}finally {
+				if(pstmt != null) {try {pstmt.close();}catch(Exception e) {}}
+				if(con != null) {try {con.close();}catch(Exception e) {}}
+			}
 		}
 	}
 }

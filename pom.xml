@@ -182,7 +182,20 @@
 		<version>${org.springframework-version}</version>
 	</dependency>
 <!-- 2020/5/16 김동규 BcryptPasswordEncoder를 이용한 암호화를 사용하기 위해 테스트 코드 작성. 테스트 코드 실행 위해  spring-test가 추가되어야 함. 끝.-->
-
+<!-- 2020/5/18 김동규 HikariCP라이브러리 추가.-->
+	<dependency>
+		<groupId>com.zaxxer</groupId>
+		<artifactId>HikariCP</artifactId>
+		<version>2.7.4</version>
+	</dependency>
+<!-- 2020/5/18 김동규 HikariCP 추가 끝.-->
+<!-- 2020/5/18 김동규 ojdbc라이브러리 추가.-->
+	<dependency>
+			<groupId>com.jslsolucoes</groupId>
+			<artifactId>ojdbc6</artifactId>
+			<version>11.2.0.1.0</version>
+		</dependency>
+<!-- 2020/5/18 김동규 ojdbc라이브러리 추가끝.-->
 	</dependencies>
     <build>
         <plugins>
