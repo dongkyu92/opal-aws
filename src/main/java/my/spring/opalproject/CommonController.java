@@ -35,4 +35,9 @@ public class CommonController {
 		}
 		return "customLogin";
 	}
+	
+	@RequestMapping(value="/kk")
+	public String signUp() {
+		return "signUp";
+	}
 }

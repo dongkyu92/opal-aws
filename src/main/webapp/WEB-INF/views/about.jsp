@@ -1,198 +1,91 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page session="false"%>
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
-<!DOCTYPE html>
-<html>
+<%@ taglib uri="http://www.springframework.org/security/tags"
+	prefix="sec"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<html class="no-js" lang="">
 <head>
-<meta charset="EUC-KR">
-<title>¼Ò°³</title>
-
+<meta name="description" content="">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<link rel="stylesheet" href="resources/journal/bootstrap.css"
-	media="screen">
-<link rel="stylesheet" href="resources/_assets/css/custom.min.css">
-<link rel="stylesheet" href="resources/ourcss/main.css">
+<title>OPAL :: ì˜¤íŒ”ì´ëž€</title>
+<link rel="icon" type="image/png" sizes="32x32"
+	href="resources/images/Opal.png">
+<link rel="stylesheet" href="resources/css/bootstrap.min.css">
+<link rel="stylesheet" href="resources/css/flexslider.css">
+<link rel="stylesheet" href="resources/css/jquery.fancybox.css">
+<link rel="stylesheet" href="resources/css/main.css">
 <link rel="stylesheet" href="resources/ourcss/about.css">
-
+<link rel="stylesheet" href="resources/css/responsive.css">
+<link rel="stylesheet" href="resources/css/animate.min.css">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+<link
+	href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap"
+	rel="stylesheet">
+<script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
+<script type="text/javascript">
+	$(document).ready(function() {
+		$("#nav ul#sub-menu").hide();
+		$("#nav ul#main-menu li").click(function() {
+			$("ul", this).slideToggle("fast");
+		});
+	});
+</script>
 </head>
 <body>
-	<header>
-		<div class="header_wrap">
-			<div class="logo">
-				<a href="/opalproject/main">
-					<h1>
-						<img src="resources/images/Opal.png" width=150 alt
-							class="default_logo">
-					</h1>
-				</a>
-			</div>
 
-			<div class="top_nav">
-				<div class="top_ul">
-					<div class="bs-component1">
-						<nav class="navbar navbar-expand-lg navbar-light bg-light">
-							<button class="navbar-toggler" type="button"
-								data-toggle="collapse" data-target="#navbarColor03"
-								aria-controls="navbarColor03" aria-expanded="false"
-								aria-label="Toggle navigation">
-								<span class="navbar-toggler-icon"></span>
-							</button>
-
-							<div class="collapse navbar-collapse" id="navbarColor03">
-								<ul class="navbar-nav mr-auto">
-									<li class="nav-item"><a class="nav-link"
-										style="font-size: 12px;" href="/opalproject/customLogin">·Î±×ÀÎ</a></li>
-									<li class="nav-item"><a class="nav-link"
-										style="font-size: 12px;" href="/opalproject/entrance">È¸¿ø°¡ÀÔ</a></li>
-									<li class="nav-item"><a class="nav-link"
-										style="font-size: 12px;" href="#">°í°´¼¾ÅÍ</a></li>
+	<section class="banner" role="banner">
+		<header id="header">
+			<div id="nav" class="header-content clearfix">
+				<a class="logo" href="/opalproject/index"> <img
+					src="resources/images/Opal.png" width="100" alt=""></a>
+				<nav class="navigation" role="navigation">
+					<ul id="main-menu" class="primary-nav">
+						<li><a href="/opalproject/about">ì˜¤íŒ”ì´ëž€</a></li>
+						<li><a href="/opalproject/team">íŒ€ì†Œê°œ</a></li>
+						<!-- ë¡œê·¸ì¸ì¤‘ì´ ì•„ë‹ ë•Œì—ë§Œ Login ë²„íŠ¼ì´ ë³´ìž„  -> taglib ( security/tags ) ë•Œë¬¸ì— ê°€ëŠ¥ -->
+						<sec:authorize access="isAnonymous()">
+							<li><a href='${pageContext.request.contextPath}/signin'>ë¡œê·¸ì¸</a></li>
+							<li><a href="/opalproject/signup">íšŒì›ê°€ìž…</a></li>
+						</sec:authorize>
+						<sec:authorize access="isAuthenticated()">
+							<li><a href="#">íšŒì›ì •ë³´</a>
+								<ul id="sub-menu">
+									<li><a href="#">ë‚´ ì§ˆë³‘ ë¶„ì„ ë³´ê¸°</a></li>
+									<li><a href="/opalproject/meminfomodify">íšŒì›ì •ë³´ ìˆ˜ì •</a></li>
+									<li><a href="/opalproject/cart/list">ìž¥ë°”êµ¬ë‹ˆ</a></li>
 								</ul>
-							</div>
-						</nav>
-					</div>
-				</div>
-			</div>
-	</header>
-	<!--header ³¡-->
-
-	<div class="bs-component2">
-		<nav class="navbar navbar-expand-lg navbar-light bg-light">
-			<button class="navbar-toggler" type="button" data-toggle="collapse"
-				data-target="#navbarColor03" aria-controls="navbarColor03"
-				aria-expanded="false" aria-label="Toggle navigation">
-				<span class="navbar-toggler-icon"></span>
-			</button>
-			<!--°Çµå¸®Áö ¸¶¼¼¿ä.-->
-
-			<div class="collapse navbar-collapse" id="navbarColor03"
-				style="height: 100px">
-				<div class="navbar-nav2">
-					<ul class="navbar-nav mr-auto">
-						<li class="nav-item2"><a class="nav-link"
-							style="padding-right: 4rem;" href="/opalproject/about">¼Ò°³</a></li>
-						<li class="nav-item2"><a class="nav-link"
-							style="padding-right: 4rem;" href="/opalproject/datamain">Áúº´DATA</a></li>
-						<li class="nav-item2"><a class="nav-link"
-							style="padding-right: 4rem;" href="/opalproject/goods">³ó»ê¹°±¸¸Å</a></li>
-						<li class="nav-item2"><a class="nav-link"
-							style="padding-right: 4rem;" href="/opalproject/markets">³ó°¡º°±¸¸Å</a></li>
-						<li class="nav-item2"><a class="nav-link"
-							style="padding-right: 4rem;" href="#">·¹½ÃÇÇ</a></li>
-						<li class="nav-item2"><a class="nav-link"
-							style="padding-right: 4rem;" href="#">½Ä´ÜÃßÃµ</a></li>
-						<li class="nav-item2"><a class="nav-link"
-							style="padding-right: 4rem;" href="#">Á¤±â°áÁ¦</a></li>
+							<li><form action="${pageContext.request.contextPath}/logout" method="POST">
+									<input id="logoutBtn" class="logout_button" type="submit" value="ë¡œê·¸ì•„ì›ƒ" /> 
+									<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
+								</form></li>
+						</sec:authorize>
 					</ul>
-				</div>
+				</nav>
+				<a href="#" class="nav-toggle">Menu<span></span></a>
 			</div>
-		</nav>
-	</div>
-	<hr>
-	<br>
-	<!--main navbar ³¡-->
+			<!-- header content -->
+		</header>
+		<!-- header -->
+		<div class="container">
+			<div class="col-md-10 col-md-offset-1">
+				<div class="banner-text text-center">
+					<h1>ABOUT OPAL</h1>
+				</div>
+				<!-- banner text -->
+			</div>
+		</div>
+	</section>
+	<!-- banner -->
+
 
 	<section id="about">
-		<h1 class="about_1">ABOUT US</h1>
-		<div class="p">
-			<p>¿ì¸®´Â ½Å¼±ÇÏ°í ¿µ¾ç°¡ ¸¹Àº Ä£È¯°æ ³ó»ê¹°À»</p>
-			<p>¿ÀÆÈ¼¼´ë¿¡°Ô Àü´ÞÇÏ°íÀÚ ³ë·ÂÇÕ´Ï´Ù.</p>
-		</div>
-		<!--ABOUT US ¼Ò°³ ³¡-->
-
-		<div class="cardwrap">
-			<div class="card_columns">
-				<div class="card">
-					<h3 class="card-header">
-						±èµ¿±Ô<span>Kim-Dongkyu</span>
-					</h3>
-					<div class="card-body">
-						<h5 class="card-title">ÇÁ·ÎÁ§Æ® ÃÑ Ã¥ÀÓÀÚ</h5>
-						<h6 class="card-subtitle text-muted">Back-end Developer</h6>
-					</div>
-					<img style="height: 200px; width: 100%; display: block;"
-						src="data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22318%22%20height%3D%22180%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20318%20180%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_158bd1d28ef%20text%20%7B%20fill%3Argba(255%2C255%2C255%2C.75)%3Bfont-weight%3Anormal%3Bfont-family%3AHelvetica%2C%20monospace%3Bfont-size%3A16pt%20%7D%20%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_158bd1d28ef%22%3E%3Crect%20width%3D%22318%22%20height%3D%22180%22%20fill%3D%22%23777%22%3E%3C%2Frect%3E%3Cg%3E%3Ctext%20x%3D%22129.359375%22%20y%3D%2297.35%22%3EImage%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E"
-						alt="Card image">
-					<ul class="list-group list-group-flush">
-						<li class="list-group-item">È¸¿ø °ü¸®</li>
-						<li class="list-group-item">Áöµµ ÆäÀÌÁö °ü¸®</li>
-						<li class="list-group-item">¼­ºñ½º ³» API °ü¸®</li>
-					</ul>
-				</div>
-				<!--µ¿±Ô ¼Ò°³ ³¡-->
-
-				<div class="card">
-					<h3 class="card-header">
-						ÃÖÈñÁ¤<span>Choi-Heejung</span>
-					</h3>
-					<div class="card-body">
-						<h5 class="card-title">µ¥ÀÌÅÍ ºÐ¼® ¹× ±âÈ¹ÀÚ</h5>
-						<h6 class="card-subtitle text-muted">Data Analysis & Product
-							Managing</h6>
-					</div>
-					<img style="height: 200px; width: 100%; display: block;"
-						src="data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22318%22%20height%3D%22180%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20318%20180%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_158bd1d28ef%20text%20%7B%20fill%3Argba(255%2C255%2C255%2C.75)%3Bfont-weight%3Anormal%3Bfont-family%3AHelvetica%2C%20monospace%3Bfont-size%3A16pt%20%7D%20%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_158bd1d28ef%22%3E%3Crect%20width%3D%22318%22%20height%3D%22180%22%20fill%3D%22%23777%22%3E%3C%2Frect%3E%3Cg%3E%3Ctext%20x%3D%22129.359375%22%20y%3D%2297.35%22%3EImage%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E"
-						alt="Card image">
-					<ul class="list-group list-group-flush">
-						<li class="list-group-item">DB ¾ÆÅ°ÅØÃÄ ±¸¼º</li>
-						<li class="list-group-item">Áúº´ µ¥ÀÌÅÍ ÆäÀÌÁö ±¸¼º</li>
-						<li class="list-group-item">µ¥ÀÌÅÍ ºÐ¼® ¹× ½Ã°¢È­</li>
-					</ul>
-				</div>
-				<!--ÈñÁ¤ ¼Ò°³ ³¡-->
-
-				<div class="card">
-					<h3 class="card-header">
-						¹ÚÀºÇÏ<span>Park-Eunha</span>
-					</h3>
-					<div class="card-body">
-						<h5 class="card-title">µ¥ÀÌÅÍ ½Ã°¢ ¹× ºÐ¼®°¡</h5>
-						<h6 class="card-subtitle text-muted">Data-Mining & Analysis</h6>
-					</div>
-					<img style="height: 200px; width: 100%; display: block;"
-						src="data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22318%22%20height%3D%22180%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20318%20180%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_158bd1d28ef%20text%20%7B%20fill%3Argba(255%2C255%2C255%2C.75)%3Bfont-weight%3Anormal%3Bfont-family%3AHelvetica%2C%20monospace%3Bfont-size%3A16pt%20%7D%20%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_158bd1d28ef%22%3E%3Crect%20width%3D%22318%22%20height%3D%22180%22%20fill%3D%22%23777%22%3E%3C%2Frect%3E%3Cg%3E%3Ctext%20x%3D%22129.359375%22%20y%3D%2297.35%22%3EImage%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E"
-						alt="Card image">
-					<ul class="list-group list-group-flush">
-						<li class="list-group-item">µ¥ÀÌÅÍ ½Ã°¢È­</li>
-						<li class="list-group-item">°ø°ø DB È°¿ë ÆäÀÌÁö ±¸¼º</li>
-						<li class="list-group-item">Streaming ÆäÀÌÁö ±¸¼º</li>
-					</ul>
-				</div>
-				<!--ÀºÇÏ ¼Ò°³ ³¡-->
-
-				<div class="card">
-					<h3 class="card-header">
-						Á¤ÇØ¸²<span>Jeong-Haerim</span>
-					</h3>
-					<div class="card-body">
-						<h5 class="card-title">ÇÁ·ÐÆ®¿£µå °³¹ßÀÚ</h5>
-						<h6 class="card-subtitle text-muted">Front-End Developer</h6>
-					</div>
-					<img style="height: 200px; width: 100%; display: block;"
-						src="data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22318%22%20height%3D%22180%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20318%20180%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_158bd1d28ef%20text%20%7B%20fill%3Argba(255%2C255%2C255%2C.75)%3Bfont-weight%3Anormal%3Bfont-family%3AHelvetica%2C%20monospace%3Bfont-size%3A16pt%20%7D%20%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_158bd1d28ef%22%3E%3Crect%20width%3D%22318%22%20height%3D%22180%22%20fill%3D%22%23777%22%3E%3C%2Frect%3E%3Cg%3E%3Ctext%20x%3D%22129.359375%22%20y%3D%2297.35%22%3EImage%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E"
-						alt="Card image">
-					<ul class="list-group list-group-flush">
-						<li class="list-group-item">¸ÞÀÎ ÆäÀÌÁö ±¸¼º</li>
-						<li class="list-group-item">À¥ »çÀÌÆ® µðÀÚÀÎ</li>
-						<li class="list-group-item">ÇÁ·ÐÆ® ¿£µå À¯Áö º¸¼ö</li>
-					</ul>
-				</div>
-				<!--ÇØ¸² ¼Ò°³ ³¡-->
-			</div>
-		</div>
-		<!--ÆÀ¿ø ¼Ò°³ ³¡-->
-
-		<br> <br>
-		<br> <br>
-		<br> <br>
-		<hr>
-		<br> <br>
 		<h1 class="about_1">ABOUT SERVICE</h1>
 		<div class="p">
-			<p>¿ì¸®´Â ÀÌ·± ¼­ºñ½º¸¦ ÁöÇâÇÕ´Ï´Ù.</p>
+			<p>ìš°ë¦¬ëŠ” ì´ëŸ° ì„œë¹„ìŠ¤ë¥¼ ì§€í–¥í•©ë‹ˆë‹¤.</p>
 		</div>
-		<!--ABOUT SERVICE ¼Ò°³ ³¡-->
+		<!--ABOUT SERVICE ì†Œê°œ ë-->
 		
 		<div class="featurewrap">
 			<div class="feature-grid">
@@ -201,8 +94,8 @@
 						<img src="resources/images/collaboration.png" width=150 alt>
 					</div>
 					<div class="content">
-						<p>¿ì¸®´Â ¾ðÁ¦³ª »çÀÌÆ®¸¦ ÀÌ¿ëÇÏ´Â ºÐµéÀÇ ¸ñ¼Ò¸®¸¦ ÁÖÀÇ±í°Ô µè°í ºü¸£°Ô ´ë´äÇÕ´Ï´Ù.</p>
-						<p>´Ã ¾ç¹æÇâ ¼ÒÅëÀ» ÁöÇâÇÕ´Ï´Ù.</p>
+						<p>ìš°ë¦¬ëŠ” ì–¸ì œë‚˜ ì‚¬ì´íŠ¸ë¥¼ ì´ìš©í•˜ëŠ” ë¶„ë“¤ì˜ ëª©ì†Œë¦¬ë¥¼ ì£¼ì˜ê¹Šê²Œ ë“£ê³  ë¹ ë¥´ê²Œ ëŒ€ë‹µí•©ë‹ˆë‹¤.</p>
+						<p>ëŠ˜ ì–‘ë°©í–¥ ì†Œí†µì„ ì§€í–¥í•©ë‹ˆë‹¤.</p>
 					</div>
 				</div>
 				<div class="feature">
@@ -210,8 +103,8 @@
 						<img src="resources/images/groceries.png" width=150 alt>
 					</div>
 					<div class="content">
-						<p>¿ì¸®´Â ¾ðÁ¦ ¾îµð¼­µç Á¢±ÙÇÏ±â ½¬¿î »çÀÌÆ®¸¦ ¿î¿µÇÏ¸ç ¼­ºñ½º ÇÕ´Ï´Ù. </p>
-						<p>´Ã ¿­·Á ÀÖ´Â »çÀÌÆ®¸¦ ¿î¿µÇÕ´Ï´Ù.</p>
+						<p>ìš°ë¦¬ëŠ” ì–¸ì œ ì–´ë””ì„œë“  ì ‘ê·¼í•˜ê¸° ì‰¬ìš´ ì‚¬ì´íŠ¸ë¥¼ ìš´ì˜í•˜ë©° ì„œë¹„ìŠ¤ í•©ë‹ˆë‹¤. </p>
+						<p>ëŠ˜ ì—´ë ¤ ìžˆëŠ” ì‚¬ì´íŠ¸ë¥¼ ìš´ì˜í•©ë‹ˆë‹¤.</p>
 					</div>
 				</div>
 				<div class="feature">
@@ -219,8 +112,8 @@
 						<img src="resources/images/breakfast.png" width=150; alt>
 					</div>
 					<div class="content">
-						<p>¿ì¸®´Â ¾ðÁ¦³ª Ä£È¯°æÀûÀÌ°í ½Å¼±ÇÑ ³ó»ê¹°À» ½ÄÅ¹¿¡ ¿Ã¸³´Ï´Ù.</p>
-						<p>¿ì¸®°¡ ¸Ô´Â ½ÄÇ°ÀÌ¶ó°í »ý°¢ÇÕ´Ï´Ù.</p>
+						<p>ìš°ë¦¬ëŠ” ì–¸ì œë‚˜ ì¹œí™˜ê²½ì ì´ê³  ì‹ ì„ í•œ ë†ì‚°ë¬¼ì„ ì‹íƒì— ì˜¬ë¦½ë‹ˆë‹¤.</p>
+						<p>ìš°ë¦¬ê°€ ë¨¹ëŠ” ì‹í’ˆì´ë¼ê³  ìƒê°í•©ë‹ˆë‹¤.</p>
 					</div>
 				</div>
 				<div class="feature">
@@ -228,30 +121,51 @@
 						<img src="resources/images/shopping.png" width=150 alt>
 					</div>
 					<div class="content">
-						<p>¿ì¸®´Â ¾ðÁ¦³ª ¿ÀÆÈ¼¼´ëµéÀÇ ÁúÁÁÀº ½ÄÇ°À» ¼îÇÎÇÒ ¼ö ÀÖ´Â È¯°æÀ» Á¦°øÇÕ´Ï´Ù.</p>
-						<p>´Ã ¸¸Á·ÇÏ´Â ¼­ºñ½º¸¦ Á¦°øÇÕ´Ï´Ù.</p>
+						<p>ìš°ë¦¬ëŠ” ì–¸ì œë‚˜ ì˜¤íŒ”ì„¸ëŒ€ë“¤ì˜ ì§ˆì¢‹ì€ ì‹í’ˆì„ ì‡¼í•‘í•  ìˆ˜ ìžˆëŠ” í™˜ê²½ì„ ì œê³µí•©ë‹ˆë‹¤.</p>
+						<p>ëŠ˜ ë§Œì¡±í•˜ëŠ” ì„œë¹„ìŠ¤ë¥¼ ì œê³µí•©ë‹ˆë‹¤.</p>
 					</div>
 				</div>
 			</div>
 		</div>
-		<!--¼­ºñ½º ¼Ò°³ ³¡-->
+		<!--ì„œë¹„ìŠ¤ ì†Œê°œ ë-->
 
 		<div class=mission_vision>
 			<img src="resources/images/Mission_Vision.PNG" width=1100 alt>
 			<img src="resources/images/platform.png" width=600 alt>
 		</div>
-		<!--¹Ì¼Ç&ºñÀü ¼Ò°³ ³¡-->
+		<!--ë¯¸ì…˜&ë¹„ì „ ì†Œê°œ ë-->
 
 	</section>
 
-	<footer>
-		<h3>È¨ÆäÀÌÁö Á¤º¸(¹Ù´Ú ±Û)</h3>
+	<footer class="footer">
+		<div class="footer-top">
+			<div class="container">
+				<div class="row">
+					<div class="footer-col col-md-4"></div>
+					<div class="footer-col col-md-4">
+						<img src="resources/images/Opal.png" width="150" alt="">
+						<h5>with Health</h5>
+					</div>
+					<div class="footer-col col-md-4"></div>
+				</div>
+			</div>
+		</div>
 	</footer>
-	<!--footer ³¡-->
+	<!-- footer -->
 
 </body>
-<script src="resources/_vendor/jquery/dist/jquery.min.js"></script>
-<script src="resources/_vendor/popper.js/dist/umd/popper.min.js"></script>
-<script src="resources/_vendor/bootstrap/dist/js/bootstrap.min.js"></script>
-<script src="resources/_assets/js/custom.js"></script>
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<script>
+		window.jQuery
+				|| document
+						.write('<script src="resources/js/jquery.min.js"><\/script>')
+	</script>
+	<script src="resources/js/bootstrap.min.js"></script>
+	<script src="resources/js/jquery.flexslider-min.js"></script>
+	<script src="resources/js/jquery.fancybox.pack.js"></script>
+	<script src="resources/js/jquery.waypoints.min.js"></script>
+	<script src="resources/js/retina.min.js"></script>
+	<script src="resources/js/modernizr.js"></script>
+	<script src="resources/js/main.js"></script>
 </html>

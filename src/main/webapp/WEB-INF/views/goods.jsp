@@ -1,98 +1,148 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ page session="false" %>
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
-<!DOCTYPE html>
-<html>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ page session="false"%>
+<%@ taglib uri="http://www.springframework.org/security/tags"
+	prefix="sec"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8" import="java.util.List,model.vo.GoodsVO"%>   
+	<%@ page import="java.util.ArrayList"%>
+<%@ page import="java.util.List"%>
+<%@ page import="model.vo.GoodfoodVO"%>
+<html class="no-js" lang="">
 <head>
-<meta charset="EUC-KR">
-<title>Á¦Ç°</title>
-
+<meta name="description" content="">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<link rel="stylesheet" href="resources/journal/bootstrap.css"
-	media="screen">
-<link rel="stylesheet" href="resources/_assets/css/custom.min.css">
-<link rel="stylesheet" href="resources/ourcss/main.css">
+<title>OPAL :: ìƒí’ˆ ëª©ë¡</title>
+<link rel="icon" type="image/png" sizes="32x32"
+	href="/opalproject/resources/images/Opal.png">
+<link rel="stylesheet" href="/opalproject/resources/css/bootstrap.min.css">
+<link rel="stylesheet" href="/opalproject/resources/css/flexslider.css">
+<link rel="stylesheet" href="/opalproject/resources/css/jquery.fancybox.css">
+<link rel="stylesheet" href="/opalproject/resources/css/main.css">
+<link rel="stylesheet" href="/opalproject/resources/css/responsive.css">
+<link rel="stylesheet" href="/opalproject/resources/css/animate.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="/opalproject/resources/ourcss/goodsform.css">
+<link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap" rel="stylesheet">
+<script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
+<script type="text/javascript">
+	$(document).ready(function() {
+		$("#nav ul#sub-menu").hide();
+		$("#nav ul#main-menu li").click(function() {
+			$("ul", this).slideToggle("fast");
+		});
+	});
+</script>
 
 </head>
 <body>
-	<header>
-		<div class="header_wrap">
-			<div class="logo">
-			  <a href="/opalproject/main">
-				<h1>
-					<img src="resources/images/Opal.png" width=150 alt class="default_logo">
-				</h1>
-			  </a>
-			</div>
-
-			<div class="top_nav">
-				<div class="top_ul">
-					<div class="bs-component1">
-						<nav class="navbar navbar-expand-lg navbar-light bg-light">
-							<button class="navbar-toggler" type="button"
-								data-toggle="collapse" data-target="#navbarColor03"
-								aria-controls="navbarColor03" aria-expanded="false"
-								aria-label="Toggle navigation">
-								<span class="navbar-toggler-icon"></span>
-							</button>
-
-							<div class="collapse navbar-collapse" id="navbarColor03">
-								<ul class="navbar-nav mr-auto">
-									<li class="nav-item"><a class="nav-link" style="font-size: 12px;" href="/opalproject/customLogin">·Î±×ÀÎ</a></li>
-									<li class="nav-item"><a class="nav-link" style="font-size: 12px;" href="/opalproject/entrance">È¸¿ø°¡ÀÔ</a></li>
-									<li class="nav-item"><a class="nav-link" style="font-size: 12px;" href="#">°í°´¼¾ÅÍ</a></li>
+ 
+	<section class="banner" role="banner">
+		<header id="header">
+			<div id="nav" class="header-content clearfix">
+				<a class="logo" href="/opalproject/index"> 
+				   <img src="/opalproject/resources/images/Opal.png" width="100" alt=""></a>
+				<nav class="navigation" role="navigation">
+					<ul id="main-menu" class="primary-nav">
+						<li><a href="/opalproject/about">ì˜¤íŒ”ì´ë€</a></li>
+						<li><a href="/opalproject/team">íŒ€ì†Œê°œ</a></li>
+						<!-- ë¡œê·¸ì¸ì¤‘ì´ ì•„ë‹ ë•Œì—ë§Œ Login ë²„íŠ¼ì´ ë³´ì„  -> taglib ( security/tags ) ë•Œë¬¸ì— ê°€ëŠ¥ -->
+						<sec:authorize access="isAnonymous()">
+							<li><a href='${pageContext.request.contextPath}/signin'>ë¡œê·¸ì¸</a></li>
+							<li><a href="/opalproject/signup">íšŒì›ê°€ì…</a></li>
+						</sec:authorize>
+						<sec:authorize access="isAuthenticated()">
+							<li><a href="#">íšŒì›ì •ë³´</a>
+								<ul id="sub-menu">
+									<li><a href="#">ë‚´ ì§ˆë³‘ ë¶„ì„ ë³´ê¸°</a></li>
+									<li><a href="#">íšŒì›ì •ë³´ ìˆ˜ì •</a></li>
 								</ul>
-							</div>
-						</nav>
-					</div>
-				</div>
+							<li><form action="${pageContext.request.contextPath}/logout" method="POST">
+									<input id="logoutBtn" class="logout_button" type="submit" value="ë¡œê·¸ì•„ì›ƒ" /> 
+									<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
+								</form></li>
+						</sec:authorize>
+					</ul>
+				</nav>
+				<a href="#" class="nav-toggle">Menu<span></span></a>
 			</div>
-	</header>
-	<!--header ³¡-->
-
-	<div class="bs-component2">
-		<nav class="navbar navbar-expand-lg navbar-light bg-light">
-			<button class="navbar-toggler" type="button" data-toggle="collapse"
-				data-target="#navbarColor03" aria-controls="navbarColor03"
-				aria-expanded="false" aria-label="Toggle navigation">
-				<span class="navbar-toggler-icon"></span>
-			</button>
-			<!--°Çµå¸®Áö ¸¶¼¼¿ä.-->
-
-			<div class="collapse navbar-collapse" id="navbarColor03" style="height:100px">
-			   <div class="navbar-nav2">
-			   <ul class="navbar-nav mr-auto">
-					<li class="nav-item2"><a class="nav-link" style="padding-right: 4rem;" href="/opalproject/about">¼Ò°³</a></li>
-					<li class="nav-item2"><a class="nav-link" style="padding-right: 4rem;" href="/opalproject/datamain">Áúº´DATA</a></li>
-					<li class="nav-item2"><a class="nav-link" style="padding-right: 4rem;" href="/opalproject/goods">³ó»ê¹°±¸¸Å</a></li>
-					<li class="nav-item2"><a class="nav-link" style="padding-right: 4rem;" href="/opalproject/markets">³ó°¡º°±¸¸Å</a></li>
-					<li class="nav-item2"><a class="nav-link" style="padding-right: 4rem;" href="#">·¹½ÃÇÇ</a></li>
-					<li class="nav-item2"><a class="nav-link" style="padding-right: 4rem;" href="#">½Ä´ÜÃßÃµ</a></li>
-					<li class="nav-item2"><a class="nav-link" style="padding-right: 4rem;" href="#">Á¤±â°áÁ¦</a></li>
-				</ul></div>
-			</div>
-		</nav>
-	</div>
-	<hr>
-	<br>
-	<!--main navbar ³¡-->
-	
-	<section class="main">
-	<!-- ¿©±â¿¡ ¸¸µç ÄÁÅÙÃ÷¸¦ ³ÖÀ¸¸é µÉ °Í °°´Ù. -->
-	<!-- Main Controller ³»ºÎ¿¡ Á¸ÀçÇÏ´Â goods ¸Ş¼­µå. -->
-	<!-- ±æ¾îÁø´Ù¸é ¸Ş¼­µå¸¦ ºĞÇÒÇØ°¡ »ç¿ëÇØµµ µÈ´Ù. -->
+			<!-- header content -->
+		</header>
+		<!-- header -->
 	</section>
-	
-	<footer>
-		<h3>È¨ÆäÀÌÁö Á¤º¸(¹Ù´Ú ±Û)</h3>
-	</footer>
-	<!--footer ³¡-->
-	
+	<!-- banner -->
+
+   <section id="goods">
+      	<!-- 20200513-->
+		
+		
+		<h1>ë‚˜ë¥¼ ìœ„í•œ ë§ì¶¤ ìˆ˜í¼ í‘¸ë“œ ë§ˆì¼“</h1>
+<div class="wrapper">
+
+<%
+List<GoodsVO> list = (List<GoodsVO>) request.getAttribute("list");
+String[] food_cd = (String[])request.getAttribute("food_cd");
+
+System.out.print("ë¦¬ìŠ¤íŠ¸ ì¶œë ¥" + list);
+
+for(int i = 0 ; i<food_cd.length;i++){
+	System.out.println(food_cd[i]);
+}
+
+
+
+if(list != null){ %>
+ <div id="columns">	
+	<% for(GoodsVO vo : list){
+%>
+
+ 			<div class="card">
+ 			<img src="/opalproject/resources/imgp/<%=vo.getProduct_url()%>.PNG">
+					<h2 class="title"><%= vo.getProduct_name() %></h2>
+					<% System.out.print(vo.getProduct_name()); %>
+					<p class="copy"><%= vo.getProduct_content() %></p>
+					<% System.out.print(vo.getProduct_content()); %>
+					<button class="btn" onclick="location.href='/opalproject/goods/read?product_cd=<%=vo.getProduct_cd()%>'">
+					 <%= vo.getProduct_name() %>ë³´ëŸ¬ê°€ê¸°</button>
+			</div>
+
+					<%} %>
+			</div>
+		<% }
+			%>
+
+</div>
+
+   </section>
+
+
+   <footer class="footer">
+      <div class="footer-top">
+         <div class="container">
+            <div class="row">
+               <div class="footer-col col-md-4"></div>
+               <div class="footer-col col-md-4">
+                  <img src="/opalproject/resources/images/Opal.png" width="150" alt="">
+                  <h5>with Health</h5>
+               </div>
+               <div class="footer-col col-md-4"></div>
+            </div>
+         </div>
+      </div>
+   </footer>
+   <!-- footer -->
 </body>
-<script src="resources/_vendor/jquery/dist/jquery.min.js"></script>
-<script src="resources/_vendor/popper.js/dist/umd/popper.min.js"></script>
-<script src="resources/_vendor/bootstrap/dist/js/bootstrap.min.js"></script>
-<script src="resources/_assets/js/custom.js"></script>
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<script>
+		window.jQuery
+				|| document
+						.write('<script src="resources/js/jquery.min.js"><\/script>')
+	</script>
+	<script src="resources/js/bootstrap.min.js"></script>
+	<script src="resources/js/jquery.flexslider-min.js"></script>
+	<script src="resources/js/jquery.fancybox.pack.js"></script>
+	<script src="resources/js/jquery.waypoints.min.js"></script>
+	<script src="resources/js/retina.min.js"></script>
+	<script src="resources/js/modernizr.js"></script>
+	<script src="resources/js/main.js"></script>
 </html>
